@@ -65,7 +65,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(helm-ls-git)
+   dotspacemacs-additional-packages '(helm-ls-git focus writeroom-mode adaptive-wrap)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -444,6 +444,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq display-time-format "%Y-%m-%d %H:%M")
   (setq display-time-default-load-average nil)
+  (setq compilation-scroll-output t)
   (display-time-mode 1)
   (with-eval-after-load 'evil
     (defalias #'forward-evil-word #'forward-evil-symbol))
@@ -486,6 +487,7 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq shell-pop-autocd-to-working-dir nil)
+  (setq org-adapt-indentation nil)
   (spacemacs/set-leader-keys
     "gl" 'helm-ls-git-ls
     "asp" 'lexwin/helm-shell-run-previous-command)
