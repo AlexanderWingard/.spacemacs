@@ -442,6 +442,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq display-time-format "%Y-%m-%d %H:%M")
+  (setq display-time-default-load-average nil)
+  (display-time-mode 1)
   (with-eval-after-load 'evil
     (defalias #'forward-evil-word #'forward-evil-symbol))
   (setenv "no_proxy" "127.0.0.1,localhost"))
