@@ -465,6 +465,20 @@ dump."
     (helm-comint-input-ring)
     (comint-send-input)))
 
+(defun lexwin/calc-region (start end &optional prefix)
+  (interactive "r\nP")
+  (let* ((expr (buffer-substring start end))
+         (result (calc-eval expr))
+         (ends-with-newline (string-match "\n$" expr)))
+    (if prefix
+        (progn
+          (kill-new result)
+          (message "%s" result))
+      (delete-region start end)
+      (insert result)
+      (when ends-with-newline
+                (insert "\n")))))
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
